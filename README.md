@@ -1,4 +1,6 @@
 # Hello World Example (In Different Languages) 🌎🌎🌎
+Running nextflow on UCSD's research cluster/HPC
+Tutorial: https://huixinng.com/articles/hello-worldnf-on-the-research-cluster
 
 ## Overview
 This repository contains a Nextflow workflow designed for processing greeting messages. The workflow includes two primary processes: `sayHello` and `toUpper`. It reads greetings and language codes from specified input files, creates greeting messages, and then converts these messages to uppercase.
