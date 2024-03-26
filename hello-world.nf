@@ -1,37 +1,49 @@
-params.output_file = 'output.txt'
-
+// Defining a process named 'sayHello'
 process sayHello {
-	input:
-		val greeting
-		val lang
-	
-    	output:
-        	path "${lang}-${params.output_file}"
+        // Input definitions for the process
+        input:
+                val greeting // Declares a variable 'greeting' as input
+                val lang // Declares a variable 'lang' as input
 
-	"""
-	echo '$greeting' > '$lang-$params.output_file' 
-	"""  
+        // Output definition for the process
+        output:
+                path "${lang}-${params.output_file}" // Specifies the output file path, dynamically named using the 'lang' variable and a parameter
+
+        // The script block of the process
+        """
+        echo '$greeting' > '$lang-$params.output_file' // Writes the 'greeting' variable content into a file named using 'lang' and 'params.output_file'
+        """
 }
 
+// Defining another process named 'toUpper'
 process toUpper {
-   	
-	input: 
-		path input_file
-		
-   	output: 
-		path "upper-${input_file}"
 
-	"""
-	cat $input_file | tr '[a-z]' '[A-Z]' > upper-${input_file}
-	"""
+        // Input definitions for this process
+        input:
+                path input_file // Declares 'input_file' as an input path
+
+        // Output definitions for this process
+        output:
+                path "upper-${input_file}" // Specifies the output file path, prefixed with 'upper-'
+
+        // The script block of the process
+        """
+        cat $input_file | tr '[a-z]' '[A-Z]' > upper-${input_file} // Reads 'input_file', converts all lowercase letters to uppercase, and writes to a new file
+        """
 }
 
+// Defining a workflow block
 workflow {
-	//greeting_ch = Channel.of(params.greeting)
-	greeting_ch = Channel.fromPath(params.input_file).splitText() { it.trim() }
-	//	lang_ch = Channel.of(params.lang)
-	lang_ch = Channel.fromPath(params.lang_file).splitText() {it.trim()}
-	sayHello(greeting_ch, lang_ch)
+        // Creates a channel from a file specified in 'params.input_file' and splits its text into items
+        greeting_ch = Channel.fromPath(params.input_file).splitText() { it.trim() } 
 
-	toUpper(sayHello.out)
+        // Creates another channel from a file specified in 'params.lang_file' and splits its text into items
+        lang_ch = Channel.fromPath(params.lang_file).splitText() { it.trim() }
+
+        // Invokes the 'sayHello' process with the two channels 'greeting_ch' and 'lang_ch' as input
+        sayHello(greeting_ch, lang_ch)
+
+        // Invokes the 'toUpper' process with the output of 'sayHello' process as input
+        toUpper(sayHello.out)
 }
+
