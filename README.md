@@ -1,4 +1,4 @@
-# Hello World Example (In Different Languages) 🌎🌎🌎
+# Hello World Example 🌎🌎🌎
 Running nextflow on UCSD's research cluster/HPC  
 Tutorial: https://huixinng.com/articles/hello-worldnf-on-the-research-cluster
 
