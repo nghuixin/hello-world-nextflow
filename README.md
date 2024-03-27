@@ -8,6 +8,7 @@ This repository contains a Nextflow workflow designed for processing greeting me
 ## Prerequisites
 - Nextflow (20.10.0 or later)
 - A Unix-like environment (Linux)
+- Java
 
 ## File Structure
 - `hello-world.nf`: The main Nextflow script containing the workflow.
