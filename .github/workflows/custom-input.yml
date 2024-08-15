@@ -1,0 +1,27 @@
+name: Custom Input Nextflow Workflow
+
+on: workflow_dispatch
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Install Java
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+
+    - name: Install Nextflow
+      run: |
+        curl -s https://get.nextflow.io | bash
+        sudo mv nextflow /usr/local/bin/
+
+    - name: Run Nextflow Workflow with Custom Inputs
+      run: |
+        echo "mhoroi" > greetings.txt
+        echo "shona" > languages.txt
+        nextflow run hello-world.nf
