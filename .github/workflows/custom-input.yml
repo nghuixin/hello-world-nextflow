@@ -30,3 +30,10 @@ jobs:
         echo "mhoroi" > greetings.txt
         echo "shona" > languages.txt
         nextflow run hello-world.nf --input_file "greetings.txt" --lang_file "languages.txt" --output_file "results.txt"  --ansi_log false
+        
+    - name: Upload output files as artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: nextflow-outputs
+        path: |
+          upper-shona-results.txt
