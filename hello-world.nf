@@ -7,11 +7,11 @@ process sayHello {
 
         // Output definition for the process
         output:
-                path "${lang}-${params.output_file}" // Specifies the output file path, dynamically named using the 'lang' variable and a parameter
+                path "${lang}-${params.output_file}" // Specifies the output file path, dynamically named using the lang variable and a parameter
 
         // The script block of the process
         """
-        echo '$greeting' > '$lang-$params.output_file' // Writes the 'greeting' variable content into a file named using 'lang' and 'params.output_file'
+        echo '$greeting' > '$lang-$params.output_file' // Writes the greeting variable content into a file named using lang and params.output_file
         """
 }
 
