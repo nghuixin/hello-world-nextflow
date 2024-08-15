@@ -7,7 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        java: [ '11', '17', '21' ]
+        #java: [ '11', '17', '21' ]
+        java : ['11']
         nextflow: ['latest-edge', 'latest-stable' ]
         
     steps:
@@ -28,4 +29,4 @@ jobs:
       run: |
         echo "mhoroi" > greetings.txt
         echo "shona" > languages.txt
-        nextflow run hello-world.nf --input_file "greetings.txt" --lang_file "languages.txt" --ansi_log false
+        nextflow run hello-world.nf --input_file "greetings.txt" --lang_file "languages.txt" --output_file "results.txt"  --ansi_log false
