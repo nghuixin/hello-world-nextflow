@@ -11,7 +11,7 @@ process sayHello {
 
         // The script block of the process
         """
-        echo '$greeting' > '$lang-$params.output_file' // Writes the greeting variable content into a file named using lang and params.output_file
+        echo '$greeting' > '$lang-$params.output_file' # Writes the greeting variable content into a file named using lang and params.output_file
         """
 }
 
@@ -28,7 +28,7 @@ process toUpper {
 
         // The script block of the process
         """
-        cat $input_file | tr '[a-z]' '[A-Z]' > upper-${input_file} 
+        cat $input_file | tr '[a-z]' '[A-Z]' > upper-${input_file} # Converts all lowercase letters to uppercase and writes to a new file
         """
 }
 
