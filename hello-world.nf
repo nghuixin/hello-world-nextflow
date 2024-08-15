@@ -28,7 +28,7 @@ process toUpper {
 
         // The script block of the process
         """
-        cat $input_file | tr '[a-z]' '[A-Z]' > upper-${input_file} // Reads 'input_file', converts all lowercase letters to uppercase, and writes to a new file
+        cat $input_file | tr '[a-z]' '[A-Z]' > upper-${input_file} 
         """
 }
 
