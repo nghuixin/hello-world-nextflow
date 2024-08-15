@@ -28,4 +28,4 @@ jobs:
       run: |
         echo "mhoroi" > greetings.txt
         echo "shona" > languages.txt
-        nextflow run hello-world.nf
+        nextflow run hello-world.nf --input_file "greetings.txt" --lang_file "languages.txt" --ansi_log false
