@@ -35,5 +35,8 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: nextflow-outputs
-        path: |
-          upper-shona-results.txt
+        path: '**/upper-shona-results.txt'
+        if-no-files-found: warn
+
+
+          
